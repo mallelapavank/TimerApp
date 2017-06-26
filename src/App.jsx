@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       deadline: "December 25, 2017",
       newDeadline: "",
-      initialTime: "11",
+      initialTime: "5",
       inputTime: "0"
     }
   }

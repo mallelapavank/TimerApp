@@ -5,41 +5,36 @@ class Stopclock extends Component {
   constructor(props) {
     super(props);
     this.state = ({
-      enteredSeconds: 2
+      enteredSeconds: 0,
+      interval: 0
     })
+    console.log('props', this.props);
   }
 
-  componentWillMount() {
-    console.log('1. WillMount called');
-    this.startTimer(this.props.initialTime)
-  }
+  // componentWillMount(){
+  //   this.setTimer(this.props.initialTime);
+  // }
 
-  componentDidMount() {
-    console.log('5. DidMount called');
-    setInterval(() => this.startTimer(this.state.enteredSeconds), 1000);
-    console.log('setInterval......................');
-  }
-
-setTimer(initialTime) {
-    console.log('setTimer called');
+  componentDidMount(){
     this.setState({enteredSeconds: this.props.initialTime});
-    console.log('enteredSeconds set to initialTime');
-}
-
-startTimer(enteredSeconds) {
-  if(this.state.enteredSeconds !== 0){
-    this.setState({
-      enteredSeconds: this.state.enteredSeconds - 1
-    })
-    console.log('startTimer called');
+    let interval = setInterval(() => this.setTimer(this.state.enteredSeconds), 1000);
+    this.setState({interval: interval});
   }
-}
+
+  setTimer(inputTime){
+    // this.setState({enteredSeconds: inputTim  });
+    if(inputTime === 0){
+      this.setState({enteredSeconds: "Time's Up!"});
+      clearInterval(this.state.interval);
+    } else {
+      this.setState({enteredSeconds: inputTime - 1});
+    }
+  }
 
   render() {
-    console.log('2. render called');
-    console.log('3. initialTime', this.props.initialTime);
-    console.log('4. enteredSeconds', this.state.enteredSeconds);
-
+    console.log('render called');
+    console.log('initialTime', this.props.initialTime);
+    console.log('enteredSeconds', this.state.enteredSeconds);
     return(
     <div className="Stopwatch-title">
       {this.state.enteredSeconds}
