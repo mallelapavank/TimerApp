@@ -11,9 +11,9 @@ class Stopclock extends Component {
     console.log('props', this.props);
   }
 
-  // componentWillMount(){
-  //   this.setTimer(this.props.initialTime);
-  // }
+  componentWillMount(){
+    this.setTimer(this.props.initialTime);
+  }
 
   componentDidMount(){
     this.setState({enteredSeconds: this.props.initialTime});
