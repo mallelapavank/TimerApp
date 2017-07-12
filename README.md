@@ -2,6 +2,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Timer App
 
-This is a simple timer app build using ReactJS. It has two components in it:
+This is a simple timer app built in ReactJS. It has two components in it:
 - Date countdown
 - Seconds countdown
